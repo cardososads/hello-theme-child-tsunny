@@ -50,7 +50,7 @@ function show_session_data()
 		session_start(); // Inicia a sessão se ainda não estiver iniciada
 	}
 	echo '<pre>';
-	var_dump($_SESSION); // Mostra os dados da sessão
+	echo 'AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH'; // Mostra os dados da sessão
 	echo '</pre>';
 }
 
