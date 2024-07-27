@@ -44,15 +44,12 @@ function redirect_non_logged_users_to_login()
 }
 add_action('template_redirect', 'redirect_non_logged_users_to_login');
 
-function show_session_data()
+function redirect_non_logged_users_to_login()
 {
-	if (!session_id()) {
-		session_start(); // Inicia a sessão se ainda não estiver iniciada
+	if (!is_user_logged_in() && !is_page('login') && (is_front_page() || is_home())) {
+		// Verifica se o usuário não está logado, não está na página de login e está na página inicial ou do blog
+		wp_redirect(home_url('/login')); // Redireciona para a página de login
+		exit();
 	}
-	echo '<pre>';
-	echo 'AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH'; // Mostra os dados da sessão
-	echo '</pre>';
 }
-
-// Adiciona a função ao wp_footer para que os dados da sessão sejam exibidos no rodapé de todas as páginas
-add_shortcode('show_session_data_sc', 'show_session_data');
+add_action('template_redirect', 'redirect_non_logged_users_to_login');
