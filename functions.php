@@ -35,11 +35,11 @@ function hello_elementor_child_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'hello_elementor_child_scripts_styles', 20 );
 
-function redirect_to_login_page()
+function redirect_to_login()
 {
-	if (!is_page('login')) { // Verifica se a página atual não é a página de login
+	if (is_front_page() || is_home()) { // Verifica se é a página inicial ou a página do blog
 		wp_redirect(home_url('/login')); // Redireciona para a página de login
 		exit();
 	}
 }
-add_action('template_redirect', 'redirect_to_login_page');
+add_action('template_redirect', 'redirect_to_login');
