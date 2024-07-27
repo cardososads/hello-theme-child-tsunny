@@ -55,4 +55,4 @@ function show_session_data()
 }
 
 // Adiciona a função ao wp_footer para que os dados da sessão sejam exibidos no rodapé de todas as páginas
-add_action('wp_footer', 'show_session_data');
+add_shortcode('show_session_data_sc', 'show_session_data');
