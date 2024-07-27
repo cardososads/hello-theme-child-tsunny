@@ -43,3 +43,13 @@ function redirect_non_logged_users_to_login()
 	}
 }
 add_action('template_redirect', 'redirect_non_logged_users_to_login');
+
+function show_session_data()
+{
+	if (!session_id()) {
+		session_start(); // Inicia a sessão se ainda não estiver iniciada
+	}
+	echo '<pre>';
+	var_dump($_SESSION); // Mostra os dados da sessão
+	echo '</pre>';
+}
