@@ -33,13 +33,3 @@ function hello_elementor_child_scripts_styles() {
 	);
 
 }
-
-function redirect_non_logged_users_to_login()
-{
-	if (!is_user_logged_in() && !is_page('login') && (is_front_page() || is_home())) {
-		// Verifica se o usuário não está logado, não está na página de login e está na página inicial ou do blog
-		wp_redirect(home_url('/login')); // Redireciona para a página de login
-		exit();
-	}
-}
-add_action('template_redirect', 'redirect_non_logged_users_to_login');
