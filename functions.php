@@ -34,11 +34,11 @@ function hello_elementor_child_scripts_styles() {
 
 }
 
-function redirect_non_logged_users()
+function redirect_non_logged_in_users()
 {
-	if (!is_user_logged_in()) {
-		wp_redirect(site_url('/login'));
+	if (!is_user_logged_in() && !is_page('login')) {
+		wp_redirect(home_url('/login'));
 		exit;
 	}
 }
-add_action('template_redirect', 'redirect_non_logged_users');
+add_action('wp', 'redirect_non_logged_in_users');
