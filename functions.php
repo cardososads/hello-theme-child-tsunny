@@ -34,11 +34,12 @@ function hello_elementor_child_scripts_styles() {
 
 }
 
-function redirect_non_logged_in_users()
+function jetengine_redirect_non_logged_users()
 {
+	// Verifica se o usuário não está logado e não está na página de login
 	if (!is_user_logged_in() && !is_page('login')) {
 		wp_redirect(home_url('/login'));
 		exit;
 	}
 }
-add_action('wp', 'redirect_non_logged_in_users');
+add_action('template_redirect', 'jetengine_redirect_non_logged_users');
