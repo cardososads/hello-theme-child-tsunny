@@ -33,3 +33,12 @@ function hello_elementor_child_scripts_styles() {
 	);
 
 }
+
+function redirect_non_logged_users_to_login()
+{
+	if (!is_user_logged_in() && !is_page('login')) {
+		wp_redirect(site_url('/login'));
+		exit;
+	}
+}
+add_action('template_redirect', 'redirect_non_logged_users_to_login');
