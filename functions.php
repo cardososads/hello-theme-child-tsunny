@@ -43,3 +43,10 @@ function jetengine_redirect_non_logged_users()
 	}
 }
 add_action('template_redirect', 'jetengine_redirect_non_logged_users');
+
+function redirect_after_logout()
+{
+	wp_redirect(home_url('/login'));
+	exit();
+}
+add_action('wp_logout', 'redirect_after_logout');
